@@ -89,6 +89,7 @@ stages:
               scriptLocation: 'inlineScript'
               inlineScript: |
                 # Install jq for JSON processing
+                      sudo apt-get update
                       sudo apt-get install -y jq
                 
                       # Read the JSON file
