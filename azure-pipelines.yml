@@ -92,7 +92,7 @@ stages:
               inlineScript: |
                
                       # Read the JSON file
-                      settings=$(cat $(Agent.TempDirectory)/appsettings.json)
+                      settings=$(cat $(Pipeline.Workspace)/appsettings.json)
                 
                       # Convert JSON to key-value pairs for Azure CLI
                       #settings=$(echo $appSettings | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
