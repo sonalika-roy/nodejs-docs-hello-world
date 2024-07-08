@@ -91,16 +91,14 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                # Install jq for JSON processing
-                      sudo apt-get install -y jq
-                
-                      # Read the JSON file
+               
+                      echo "Read the JSON file"
                       appSettings=$(cat $(appsettings.secureFilePath))
                 
-                      # Convert JSON to key-value pairs for Azure CLI
+                      echo "Convert JSON to key-value pairs for Azure CLI"
                       settings=$(echo $appSettings | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
                 
-                      # Set the app settings in Azure App Service
+                      echo "Set the app settings in Azure App Service"
                       az webapp config appsettings set --name sridfg --resource-group sridfg --settings $settings
              
                 
