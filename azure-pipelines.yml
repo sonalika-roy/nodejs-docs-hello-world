@@ -82,23 +82,13 @@ stages:
             inputs:
               secureFile: 'appsettings.json'
           
-          
-
+               
+                      # Read the JSON file
           - task: AzureCLI@2
             inputs:
               azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(1)(0f629d89-46bc-474b-941a-c7140441a426)'
-              scriptType: 'batch'
+              scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: |
-               
-                      # Read the JSON file
-                      settings=$(cat $(Pipeline.Workspace)/appsettings.json)
+              inlineScript: 'settings=$(cat $(Pipeline.Workspace)/appsettings.json)'
                 
-                      # Convert JSON to key-value pairs for Azure CLI
-                      #settings=$(echo $appSettings | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
-                
-                      # Set the app settings in Azure App Service
-                      az webapp config appsettings set --name sridfg --resource-group sridfg --settings $settings
-          
-
-         
+                      
