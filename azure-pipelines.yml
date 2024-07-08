@@ -77,8 +77,9 @@ stages:
               StartupCommand: 'npm run start'
               
 
-        
           - task: DownloadSecureFile@1
+            name: appsettings
+            displayName: 'Download app settings file'
             inputs:
               secureFile: 'appsettings.json'
           
@@ -89,6 +90,6 @@ stages:
               azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(1)(0f629d89-46bc-474b-941a-c7140441a426)'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: 'settings=$(cat $(Pipeline.Workspace)/appsettings.json)'
+              inlineScript: 'settings=$(cat $(appsettings.secureFilePath)'
                 
                       
