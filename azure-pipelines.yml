@@ -97,9 +97,19 @@ stages:
                 
                       echo "Convert JSON to key-value pairs for Azure CLI"
                       settings=$(echo $appSettings | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
-                
+                      echo "Convert JSON to key-value pairs for Azure CLI"
+                      echo "$appSettings" | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]' > settings.env
+
                       echo "Set the app settings in Azure App Service"
-                      az webapp config appsettings set --name sridfg --resource-group sridfg --settings $settings
+                      while IFS='=' read -r key value; do
+                      if [ -n "$key" ]; then
+                         az webapp config appsettings set --name $(webAppName) --resource-group $(environmentName) --settings "$key=$value"
+                      fi
+                      done < settings.env
+
+                      echo "App settings have been set successfully."
+                     # echo "Set the app settings in Azure App Service"
+                     # az webapp config appsettings set --name sridfg --resource-group sridfg --settings $settings
              
                 
                       
