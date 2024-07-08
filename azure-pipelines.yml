@@ -90,6 +90,6 @@ stages:
               azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(1)(0f629d89-46bc-474b-941a-c7140441a426)'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: 'settings=$(cat $(appsettings.secureFilePath)'
+              inlineScript: 'settings=$(cat $(appsettings.secureFilePath))'
                 
                       
