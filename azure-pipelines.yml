@@ -90,6 +90,18 @@ stages:
               azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(1)(0f629d89-46bc-474b-941a-c7140441a426)'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: cat $(appsettings.secureFilePath)
+              inlineScript: |
+                # Install jq for JSON processing
+                      sudo apt-get install -y jq
+                
+                      # Read the JSON file
+                      appSettings=$(cat $(appsettings.secureFilePath))
+                
+                      # Convert JSON to key-value pairs for Azure CLI
+                      settings=$(echo $appSettings | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
+                
+                      # Set the app settings in Azure App Service
+                      az webapp config appsettings set --name sridfg --resource-group sridfg --settings $settings
+             
                 
                       
