@@ -27,7 +27,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      name: sragentpool
 
     steps:
     - task: NodeTool@0
