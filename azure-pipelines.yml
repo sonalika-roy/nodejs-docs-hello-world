@@ -12,7 +12,7 @@ variables:
   azureSubscription: '95960589-1f14-43f9-bc1c-db3622204c9a'
 
   # Web app name
-  webAppName: 'sridfg'
+  webAppName: 'sridfgwestus'
 
   # Environment name
   environmentName: 'sridfg'
