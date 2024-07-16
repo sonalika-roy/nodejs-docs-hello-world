@@ -71,7 +71,7 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(1)(0f629d89-46bc-474b-941a-c7140441a426)'
+              azureSubscription: 'FTA sonalikaroy - Azure CXP Internal(2)(0f629d89-46bc-474b-941a-c7140441a426)'
               appType: 'webAppLinux'
               WebAppName: 'sridfg'
               packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
